@@ -18,7 +18,8 @@ class SellerItem extends Component {
         let toDisplay = sellers.find(elem => {
             return elem.sellerId === sellerId
         })
-        return (
+        if(toDisplay === undefined) return <div>Seller not found</div>;
+         return (
             <div>
                 <div>{"Seller ID: " + toDisplay.sellerId}</div>
                 <div>{"Seller Name: " + toDisplay.name}</div>
@@ -60,6 +61,7 @@ let renderAllItems = () => {
               <div>
                 {/* <Link to={path}>{e.Description}</Link> */}
                 <Link to = {`/item/${e.identifier}`}>{e.Description}</Link>
+                <Link to ={`/seller/${e.sellerId}`}>go to seller</Link>
                 <img src={"/" + e.pic} width = "100px" height = "100px" hspace= "20px"/>
                 </div>
             );
